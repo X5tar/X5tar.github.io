@@ -4,7 +4,14 @@
         <link>https://x5tar.com/posts/</link>
         <description>所有文章 | X5tar&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>x5tar@qq.com (X5tar)</managingEditor>
-            <webMaster>x5tar@qq.com (X5tar)</webMaster><lastBuildDate>Wed, 14 Jul 2021 18:14:15 &#43;0800</lastBuildDate><atom:link href="https://x5tar.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>x5tar@qq.com (X5tar)</webMaster><lastBuildDate>Thu, 19 Aug 2021 16:26:31 &#43;0800</lastBuildDate><atom:link href="https://x5tar.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java 安全学习 Day2 -- ysoserial CC 系列</title>
+    <link>https://x5tar.com/posts/java-sec-day2/</link>
+    <pubDate>Thu, 19 Aug 2021 16:26:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://x5tar.com/posts/java-sec-day2/</guid>
+    <description><![CDATA[经过了一个月的咕，Java 安全学习之路终于从 Day1 跨越到了 Day2（建议直接改名 Month2 好吧 0x00 前言 从这篇文章开始就进行 ysoserial 中各种链的分析了，这篇文章主要]]></description>
+</item><item>
     <title>Java 安全学习 Day1 -- 基础知识</title>
     <link>https://x5tar.com/posts/java-sec-day1/</link>
     <pubDate>Wed, 14 Jul 2021 18:14:15 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://x5tar.com/posts/source-command/</guid>
     <description><![CDATA[在做题的时候遇到了上传了 shell 脚本但是没有执行权限的情况 测试脚本 测试脚本shell " 测试脚本 本地测试结果 没有执行权限denied " 没有执行权限 然]]></description>
-</item><item>
-    <title>PHP 中不包含字母和数字的 webshell</title>
-    <link>https://x5tar.com/posts/php-webshell-without-alpha-and-num/</link>
-    <pubDate>Sun, 03 May 2020 20:47:41 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://x5tar.com/posts/php-webshell-without-alpha-and-num/</guid>
-    <description><![CDATA[0x00 前言 又是好多天没写博客了，就想着再来随便水点什么吧 这种神奇的题曾经在 CNSS Recruit 2019 Web Boss题 中出现过，最近做题又遇到了一次结果还是不会（因为又多]]></description>
 </item></channel>
 </rss>

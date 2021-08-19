@@ -2,13 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://x5tar.com/categories/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
-            <loc>https://x5tar.com/tags/java/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/categories/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/tags/java/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/posts/java-sec-day2/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/posts/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/categories/security/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/tags/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
+            <loc>https://x5tar.com/</loc><lastmod>2021-08-19T16:26:31&#43;08:00</lastmod></url><url>
             <loc>https://x5tar.com/posts/java-sec-day1/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
-            <loc>https://x5tar.com/posts/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
-            <loc>https://x5tar.com/categories/security/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
-            <loc>https://x5tar.com/tags/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
-            <loc>https://x5tar.com/</loc><lastmod>2021-07-14T18:14:15&#43;08:00</lastmod></url><url>
             <loc>https://x5tar.com/tags/pickle-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</loc><lastmod>2021-06-10T17:01:50&#43;08:00</lastmod></url><url>
             <loc>https://x5tar.com/tags/python/</loc><lastmod>2021-06-10T17:01:50&#43;08:00</lastmod></url><url>
             <loc>https://x5tar.com/posts/python-pickle-unserialize/</loc><lastmod>2021-06-10T17:01:50&#43;08:00</lastmod></url><url>

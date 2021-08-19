@@ -4,7 +4,14 @@
         <link>https://x5tar.com/tags/java/</link>
         <description>Java - 标签 - X5tar&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>x5tar@qq.com (X5tar)</managingEditor>
-            <webMaster>x5tar@qq.com (X5tar)</webMaster><lastBuildDate>Wed, 14 Jul 2021 18:14:15 &#43;0800</lastBuildDate><atom:link href="https://x5tar.com/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>x5tar@qq.com (X5tar)</webMaster><lastBuildDate>Thu, 19 Aug 2021 16:26:31 &#43;0800</lastBuildDate><atom:link href="https://x5tar.com/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java 安全学习 Day2 -- ysoserial CC 系列</title>
+    <link>https://x5tar.com/posts/java-sec-day2/</link>
+    <pubDate>Thu, 19 Aug 2021 16:26:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://x5tar.com/posts/java-sec-day2/</guid>
+    <description><![CDATA[经过了一个月的咕，Java 安全学习之路终于从 Day1 跨越到了 Day2（建议直接改名 Month2 好吧 0x00 前言 从这篇文章开始就进行 ysoserial 中各种链的分析了，这篇文章主要]]></description>
+</item><item>
     <title>Java 安全学习 Day1 -- 基础知识</title>
     <link>https://x5tar.com/posts/java-sec-day1/</link>
     <pubDate>Wed, 14 Jul 2021 18:14:15 &#43;0800</pubDate>
