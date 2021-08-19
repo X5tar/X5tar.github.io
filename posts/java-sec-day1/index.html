@@ -142,7 +142,7 @@
 <p>Class 类提供了以下方法用于获取 class 的基本信息（OpenJDK Runtime Environment AdoptOpenJDK-11.0.11+9）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -188,7 +188,7 @@
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">native</span> <span class="kt">boolean</span> <span class="nf">isInstance</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">);</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">native</span> <span class="kt">boolean</span> <span class="nf">isInstance</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">);</span>
 <span class="kd">public</span> <span class="kd">native</span> <span class="kt">boolean</span> <span class="nf">isAssignableFrom</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">cls</span><span class="o">);</span>
 <span class="kd">public</span> <span class="kd">native</span> <span class="kt">boolean</span> <span class="nf">isInterface</span><span class="o">();</span>
 <span class="kd">public</span> <span class="kd">native</span> <span class="kt">boolean</span> <span class="nf">isArray</span><span class="o">();</span>
@@ -237,7 +237,7 @@
 </div><p>一些常用方法的使用如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -259,7 +259,7 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-plain" data-lang="plain">String.class.isInstance("")
+<pre class="chroma" tabindex="0"><code class="language-plain" data-lang="plain">String.class.isInstance("")
 true
 
 String.class.isInterface()
@@ -286,13 +286,13 @@ package java.lang
 <p>Field 类提供了以下方法用于获取字段的基本信息（OpenJDK Runtime Environment AdoptOpenJDK-11.0.11+9）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getDeclaringClass</span><span class="o">();</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getDeclaringClass</span><span class="o">();</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span>
 <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getModifiers</span><span class="o">();</span>
 <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getType</span><span class="o">();</span>
@@ -301,7 +301,7 @@ package java.lang
 </div><p>一些常用方法的使用如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -319,7 +319,7 @@ package java.lang
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-plain" data-lang="plain">class Test {
+<pre class="chroma" tabindex="0"><code class="language-plain" data-lang="plain">class Test {
     public String a;
     public int b;
 }
@@ -340,11 +340,11 @@ class Test
 </div><p>Field 类还提供了一些方法用于操作实例中的字段</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">get</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">);</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">get</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">);</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">Object</span> <span class="n">value</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
@@ -353,7 +353,7 @@ class Test
 <p>Method 类提供了以下方法用于获取方法的基本信息（OpenJDK Runtime Environment AdoptOpenJDK-11.0.11+9）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -363,7 +363,7 @@ class Test
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getDeclaringClass</span><span class="o">();</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getDeclaringClass</span><span class="o">();</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span>
 <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getModifiers</span><span class="o">();</span>
 <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getReturnType</span><span class="o">();</span>
@@ -376,7 +376,7 @@ class Test
 </div><p>一些常用方法的使用如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -401,7 +401,7 @@ class Test
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-plain" data-lang="plain">class Test {
+<pre class="chroma" tabindex="0"><code class="language-plain" data-lang="plain">class Test {
     public String a(String b) {
         return b;
     }
@@ -429,10 +429,10 @@ class Test
 </div><p>Field 类还提供了方法用于至今调用实例的方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">args</span><span class="o">);</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">args</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="通过-class-实例创建类的实例">通过 Class 实例创建类的实例</h3>
@@ -454,7 +454,7 @@ class Test
 <p>正常情况下，Java 不允许直接创建一个接口的实例，而是必须创建一个类实现该接口，再创建该类的实例。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -471,7 +471,7 @@ class Test
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">In</span> <span class="o">{</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">In</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">a</span><span class="o">();</span>
 <span class="o">}</span>
 
@@ -491,7 +491,7 @@ class Test
 </div><p>而 Java 标准库提供了动态代理机制，不需要提前编写实现类，而是在运行期间动态创建接口的实例，上述代码可以用以下动态代理的方法实现</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -514,7 +514,7 @@ class Test
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">In</span> <span class="o">{</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">In</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">a</span><span class="o">();</span>
 <span class="o">}</span>
 
@@ -545,14 +545,14 @@ class Test
 <p>ClassLoader 类有以下核心方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">loadClass</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+<pre class="chroma" tabindex="0"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">loadClass</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
 <span class="kd">protected</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">findClass</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
 <span class="kd">protected</span> <span class="kd">final</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">findLoadedClass</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
 <span class="kd">protected</span> <span class="kd">final</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">defineClass</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">b</span><span class="o">,</span> <span class="kt">int</span> <span class="n">off</span><span class="o">,</span> <span class="kt">int</span> <span class="n">len</span><span class="o">,</span> <span class="n">ProtectionDomain</span> <span class="n">protectionDomain</span><span class="o">);</span>
@@ -596,7 +596,7 @@ class Test
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

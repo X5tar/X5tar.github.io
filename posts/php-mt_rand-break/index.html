@@ -105,7 +105,7 @@
 <p>这一部分的源码是这样的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -130,7 +130,7 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nx">scandir</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">strlen</span><span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="o">===</span> <span class="mi">36</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">include</span> <span class="nv">$i</span><span class="p">;</span>
@@ -216,10 +216,10 @@
 <p>首先从被调用的 <code>mt_rand</code> 开始分析，<code>mt_rand</code> 返回的随机数为 <code>php_mt_rand</code> 返回值右移一位</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">RETURN_LONG</span><span class="p">(</span><span class="n">php_mt_rand</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">RETURN_LONG</span><span class="p">(</span><span class="n">php_mt_rand</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>由于右移后其最低位丢失，故一个输出的随机数对应两种可能的 <code>php_mt_rand</code> 返回值，其最低位分别为 0 和 1</p>
@@ -227,13 +227,13 @@
 <p><code>php_mt_rand</code> 返回值为经过处理的 <code>php_mt_reload</code> 中产生的值，其中进行处理的代码如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">);</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">);</span>
 <span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span>  <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x9d2c5680U</span><span class="p">;</span>
 <span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xefc60000U</span><span class="p">;</span>
 <span class="k">return</span> <span class="p">(</span> <span class="n">s1</span> <span class="o">^</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">18</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// s1 ^= (s1 &gt;&gt; 18);
@@ -247,11 +247,11 @@
 <p>故其逆操作如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">);</span> <span class="c1">// 恢复 10~20 位
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">);</span> <span class="c1">// 恢复 10~20 位
 </span><span class="c1"></span><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">22</span><span class="p">);</span> <span class="c1">// 恢复 0~9 位 (低 10 位)
 </span></code></pre></td></tr></table>
 </div>
@@ -261,13 +261,13 @@
 <p>其逆操作如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">^</span> <span class="p">(((</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x9d2c5680U</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">);</span> <span class="c1">// 恢复高 11 位
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">^</span> <span class="p">(((</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x9d2c5680U</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">);</span> <span class="c1">// 恢复高 11 位
 </span><span class="c1"></span><span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">s2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mh">0x9d2c5680U</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span><span class="p">));</span> <span class="c1">// 恢复 14~20 位
 </span><span class="c1"></span><span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">s2</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mh">0x9d2c5680U</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">));</span> <span class="c1">// 恢复 7~13 位
 </span><span class="c1"></span><span class="n">s1</span> <span class="o">^=</span> <span class="n">s2</span> <span class="o">&amp;</span> <span class="mh">0x9d2c5680U</span><span class="p">;</span> <span class="c1">// 恢复低 7 位
@@ -280,10 +280,10 @@
 <p>故其逆操作与原操作相同</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xefc60000U</span><span class="p">;</span> <span class="c1">// 恢复高 16 位
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xefc60000U</span><span class="p">;</span> <span class="c1">// 恢复高 16 位
 </span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -293,10 +293,10 @@
 <p>故其逆操作与原操作相同</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">18</span><span class="p">);</span> <span class="c1">// 恢复低 14 位
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">18</span><span class="p">);</span> <span class="c1">// 恢复低 14 位
 </span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -304,7 +304,7 @@
 <p>结合以上四步得到 <code>php_mt_rand</code> 中处理操作的逆操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -320,7 +320,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">uint32_t</span> <span class="nf">reverse_php_mt_rand</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">s1</span><span class="p">)</span> <span class="p">{</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="kt">uint32_t</span> <span class="nf">reverse_php_mt_rand</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">s1</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="mi">18</span><span class="p">);</span>
     
     <span class="n">s1</span> <span class="o">^=</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xefc60000U</span><span class="p">;</span>
@@ -341,16 +341,16 @@
 <p>且对于后 M (397) 个值，<code>state_reload[i]</code> 与 <code>state_reload[i-227]</code> 存在一定的关联，即</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">state_reload</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">twist</span><span class="p">(</span><span class="n">state_reload</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">227</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">state_reload</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">twist</span><span class="p">(</span><span class="n">state_reload</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">227</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>其中用到的宏如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -358,7 +358,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#define hiBit(u)      ((u) &amp; 0x80000000U)  </span><span class="cm">/* mask all but highest   bit of u */</span><span class="cp">
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="cp">#define hiBit(u)      ((u) &amp; 0x80000000U)  </span><span class="cm">/* mask all but highest   bit of u */</span><span class="cp">
 </span><span class="cp">#define loBit(u)      ((u) &amp; 0x00000001U)  </span><span class="cm">/* mask all but lowest    bit of u */</span><span class="cp">
 </span><span class="cp">#define loBits(u)     ((u) &amp; 0x7FFFFFFFU)  </span><span class="cm">/* mask     the highest   bit of u */</span><span class="cp">
 </span><span class="cp">#define mixBits(u, v) (hiBit(u)|loBits(v)) </span><span class="cm">/* move hi bit of u to hi bit of v */</span><span class="cp">
@@ -384,10 +384,10 @@
 <p><code>php_mt_initialize</code> 比较简单，每一个值都只与前一个值相关，其生成过程为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x6c078965U</span> <span class="o">*</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">30</span><span class="p">))</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffffffffU</span><span class="p">;</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x6c078965U</span> <span class="o">*</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">30</span><span class="p">))</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffffffffU</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>其中 <code>&amp; 0xffffffffU</code> 操作等价于 <code>% 0X100000000U</code></p>
@@ -395,11 +395,11 @@
 <p>故该操作的逆操作为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x9638806dU</span> <span class="o">*</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xffffffffU</span><span class="p">;</span>
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x9638806dU</span> <span class="o">*</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xffffffffU</span><span class="p">;</span>
 <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">^=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">30</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
@@ -408,7 +408,7 @@
 <p>简单写了一个 <code>mt_rand</code> 种子还原的程序</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre class="chroma" tabindex="0"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -549,7 +549,7 @@
 </span><span class="lnt">139
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+<pre class="chroma" tabindex="0"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
 </span><span class="cp"></span>
 <span class="cp">#define N             (624)
@@ -695,10 +695,10 @@
 <p>首先生成 228 个随机数，由于加密时已经生成 2 个随机数，所以此时输出第一个随机数为 <code>rand[2]</code>，最后一个随机数为 <code>rand[229]</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/flag.php?pass=nya_nop_nya~&amp;roll=228
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/flag.php?pass=nya_nop_nya~&amp;roll=228
 </code></pre></td></tr></table>
 </div>
 </div><p><figure><a class="lightgallery" data-sub-html="&lt;h2&gt;生成 288 个随机数&lt;/h2&gt;&lt;p&gt;random number generation&lt;/p&gt;" data-thumbnail="/posts/php-mt_rand-break/generation.png" href="/posts/php-mt_rand-break/generation.png" title="random number generation">
@@ -747,7 +747,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

